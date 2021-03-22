@@ -82,7 +82,7 @@
 
     // A more complete view than the node_exporter
     node_exporter_full: {
-      grafanaDashboardFolder: 'node_exporter_full',
+      grafanaDashboardFolder: 'node_exporter',
       grafanaDashboards+:: {
         'node-exporter-full.json': (import 'grafana-dashboards/prometheus/node-exporter-full.json'),
       },
