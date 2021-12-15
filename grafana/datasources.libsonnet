@@ -1,7 +1,8 @@
 {
-  new(name, url, type, default=false):: {
+  new(name, url, type, default=false, uid=null):: {
     name: name,
     type: type,
+    uid: uid,
     access: 'proxy',
     url: url,
     isDefault: default,
