@@ -183,7 +183,7 @@ local job_success_rate_panel = grafana.statPanel.new(
                                };
 
 local job_failure_rate_panel = grafana.statPanel.new(
-                                 'Job Falure Rate',
+                                 'Job Failure Rate',
                                  datasource='$datasource',
                                  colorMode='background',
                                )
