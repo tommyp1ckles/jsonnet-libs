@@ -3,26 +3,38 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
         "type": "dashboard"
       }
     ]
   },
   "description": "Kafka resource usage and throughput",
-  "editable": false,
+  "editable": true,
+  "fiscalYearStartMonth": 0,
   "gnetId": 721,
   "graphTooltip": 0,
-  "id": 5,
-  "iteration": 1624298233560,
+  "id": 200,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
       "collapsed": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -31,22 +43,33 @@
       },
       "id": 42,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "uid": "$datasource"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Healthcheck",
       "type": "row"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "${datasource}",
+      "datasource": {
+        "uid": "${datasource}"
+      },
       "description": "Number of active controllers in the cluster.",
       "fieldConfig": {
         "defaults": {
           "mappings": [
             {
-              "id": 0,
-              "op": "=",
-              "text": "N/A",
-              "type": 1,
-              "value": "null"
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
             }
           ],
           "thresholds": {
@@ -76,7 +99,6 @@
         "y": 1
       },
       "id": 12,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -99,33 +121,37 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "9.0.7",
       "targets": [
         {
+          "datasource": {
+            "uid": "${datasource}"
+          },
           "expr": "sum(kafka_controller_kafkacontroller_activecontrollercount{job=\"integrations/kafka\",instance=~\"$broker_id\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Active Controllers",
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "${datasource}",
+      "datasource": {
+        "uid": "${datasource}"
+      },
       "description": "Number of Brokers Online",
       "fieldConfig": {
         "defaults": {
           "mappings": [
             {
-              "id": 0,
-              "op": "=",
-              "text": "N/A",
-              "type": 1,
-              "value": "null"
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
             }
           ],
           "thresholds": {
@@ -156,7 +182,6 @@
         "y": 1
       },
       "id": 14,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -179,11 +204,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.6",
-      "repeat": null,
+      "pluginVersion": "9.0.7",
       "repeatDirection": "h",
       "targets": [
         {
+          "datasource": {
+            "uid": "${datasource}"
+          },
           "expr": "count(kafka_server_replicamanager_leadercount{job=\"integrations/kafka\",instance=~\"$broker_id\"})",
           "format": "time_series",
           "intervalFactor": 1,
@@ -195,18 +222,21 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "${datasource}",
+      "datasource": {
+        "uid": "${datasource}"
+      },
       "description": "Unclean leader election rate",
       "fieldConfig": {
         "defaults": {
           "mappings": [
             {
-              "id": 0,
-              "op": "=",
-              "text": "N/A",
-              "type": 1,
-              "value": "null"
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
             }
           ],
           "thresholds": {
@@ -236,7 +266,6 @@
         "y": 1
       },
       "id": 16,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -259,9 +288,12 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "9.0.7",
       "targets": [
         {
+          "datasource": {
+            "uid": "${datasource}"
+          },
           "expr": "sum(kafka_controller_controllerstats_uncleanleaderelectionspersec{job=\"integrations/kafka\",instance=~\"$broker_id\"})",
           "format": "time_series",
           "intervalFactor": 1,
@@ -272,18 +304,21 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "${datasource}",
+      "datasource": {
+        "uid": "${datasource}"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
           "mappings": [
             {
-              "id": 0,
-              "op": "=",
-              "text": "N/A",
-              "type": 1,
-              "value": "null"
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
             }
           ],
           "thresholds": {
@@ -313,7 +348,6 @@
         "y": 1
       },
       "id": 33,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -336,9 +370,12 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "9.0.7",
       "targets": [
         {
+          "datasource": {
+            "uid": "${datasource}"
+          },
           "expr": "sum(kafka_controller_kafkacontroller_preferredreplicaimbalancecount{job=\"integrations/kafka\",instance=~\"$broker_id\"})",
           "format": "time_series",
           "intervalFactor": 1,
@@ -353,7 +390,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${datasource}",
+      "datasource": {
+        "uid": "${datasource}"
+      },
       "editable": true,
       "error": false,
       "fieldConfig": {
@@ -391,7 +430,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "9.0.7",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -401,6 +440,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "${datasource}"
+          },
           "expr": "sum(rate(kafka_server_brokertopicmetrics_bytesinpersec{job=\"integrations/kafka\",instance=~\"$broker_id\",topic!=\"\"}[$__rate_interval]))",
           "format": "time_series",
           "intervalFactor": 2,
@@ -410,6 +452,9 @@
           "step": 4
         },
         {
+          "datasource": {
+            "uid": "${datasource}"
+          },
           "expr": "sum(rate(kafka_server_brokertopicmetrics_bytesoutpersec{job=\"integrations/kafka\",instance=~\"$broker_id\",topic!=\"\"}[$__rate_interval]))",
           "format": "time_series",
           "hide": false,
@@ -422,9 +467,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Broker network throughput",
       "tooltip": {
         "msResolution": false,
@@ -434,9 +477,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -445,37 +486,34 @@
           "format": "Bps",
           "label": "Bytes/s",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "cacheTimeout": null,
-      "datasource": "${datasource}",
+      "datasource": {
+        "uid": "${datasource}"
+      },
       "description": "Number of partitions that dont have an active leader and are hence not writable or readable.",
       "fieldConfig": {
         "defaults": {
           "mappings": [
             {
-              "id": 0,
-              "op": "=",
-              "text": "N/A",
-              "type": 1,
-              "value": "null"
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
             }
           ],
           "thresholds": {
@@ -502,7 +540,6 @@
         "y": 5
       },
       "id": 22,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -525,9 +562,12 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "9.0.7",
       "targets": [
         {
+          "datasource": {
+            "uid": "${datasource}"
+          },
           "expr": "sum(kafka_controller_kafkacontroller_offlinepartitionscount{job=\"integrations/kafka\",instance=~\"$broker_id\"})",
           "format": "time_series",
           "interval": "",
@@ -540,18 +580,21 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "${datasource}",
+      "datasource": {
+        "uid": "${datasource}"
+      },
       "description": "Number of under-replicated partitions (| ISR | < | all replicas |).",
       "fieldConfig": {
         "defaults": {
           "mappings": [
             {
-              "id": 0,
-              "op": "=",
-              "text": "N/A",
-              "type": 1,
-              "value": "null"
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
             }
           ],
           "thresholds": {
@@ -582,7 +625,6 @@
         "y": 5
       },
       "id": 20,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -605,9 +647,12 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "9.0.7",
       "targets": [
         {
+          "datasource": {
+            "uid": "${datasource}"
+          },
           "expr": "sum(kafka_server_replicamanager_underreplicatedpartitions{job=\"integrations/kafka\",instance=~\"$broker_id\"})",
           "format": "time_series",
           "hide": false,
@@ -619,18 +664,21 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "${datasource}",
+      "datasource": {
+        "uid": "${datasource}"
+      },
       "description": "Number of partitions under min insync replicas.",
       "fieldConfig": {
         "defaults": {
           "mappings": [
             {
-              "id": 0,
-              "op": "=",
-              "text": "N/A",
-              "type": 1,
-              "value": "null"
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
             }
           ],
           "thresholds": {
@@ -657,7 +705,6 @@
         "y": 5
       },
       "id": 32,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -680,9 +727,12 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "9.0.7",
       "targets": [
         {
+          "datasource": {
+            "uid": "${datasource}"
+          },
           "expr": "sum(kafka_cluster_partition_underminisr{job=\"integrations/kafka\",instance=~\"$broker_id\"})",
           "format": "time_series",
           "hide": false,
@@ -696,18 +746,21 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "${datasource}",
+      "datasource": {
+        "uid": "${datasource}"
+      },
       "description": "Partitions that are online",
       "fieldConfig": {
         "defaults": {
           "mappings": [
             {
-              "id": 0,
-              "op": "=",
-              "text": "N/A",
-              "type": 1,
-              "value": "null"
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
             }
           ],
           "thresholds": {
@@ -738,7 +791,6 @@
         "y": 5
       },
       "id": 18,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -761,9 +813,12 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "9.0.7",
       "targets": [
         {
+          "datasource": {
+            "uid": "${datasource}"
+          },
           "expr": "sum(kafka_server_replicamanager_partitioncount{job=\"integrations/kafka\",instance=~\"$broker_id\"})",
           "format": "time_series",
           "interval": "",
@@ -777,7 +832,9 @@
     },
     {
       "collapsed": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -786,6 +843,14 @@
       },
       "id": 40,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "uid": "$datasource"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "System",
       "type": "row"
     },
@@ -796,7 +861,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${datasource}",
+      "datasource": {
+        "uid": "${datasource}"
+      },
       "editable": true,
       "error": false,
       "fieldConfig": {
@@ -834,7 +901,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "9.0.7",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -844,6 +911,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "${datasource}"
+          },
           "expr": "irate(process_cpu_seconds_total{job=\"integrations/kafka\",instance=~\"$broker_id\"}[$__rate_interval])*100",
           "format": "time_series",
           "intervalFactor": 2,
@@ -854,9 +924,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "CPU Usage",
       "tooltip": {
         "msResolution": false,
@@ -866,9 +934,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -877,22 +943,16 @@
           "format": "percent",
           "label": "Cores",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -902,7 +962,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${datasource}",
+      "datasource": {
+        "uid": "${datasource}"
+      },
       "editable": true,
       "error": false,
       "fieldConfig": {
@@ -940,7 +1002,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "9.0.7",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -950,6 +1012,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "${datasource}"
+          },
           "expr": "sum without(area)(jvm_memory_bytes_used{job=\"integrations/kafka\",instance=~\"$broker_id\"})",
           "intervalFactor": 2,
           "legendFormat": "{{instance}}",
@@ -959,9 +1024,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "JVM Memory Used",
       "tooltip": {
         "msResolution": false,
@@ -971,9 +1034,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -982,22 +1043,16 @@
           "format": "bytes",
           "label": "Memory",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1007,7 +1062,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${datasource}",
+      "datasource": {
+        "uid": "${datasource}"
+      },
       "editable": true,
       "error": false,
       "fieldConfig": {
@@ -1045,7 +1102,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "9.0.7",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1055,6 +1112,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "${datasource}"
+          },
           "expr": "sum without(gc)(rate(jvm_gc_collection_seconds_sum{job=\"integrations/kafka\",instance=~\"$broker_id\"}[$__rate_interval]))",
           "intervalFactor": 2,
           "legendFormat": "{{instance}}",
@@ -1064,9 +1124,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Time spent in GC",
       "tooltip": {
         "msResolution": false,
@@ -1076,9 +1134,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1087,27 +1143,23 @@
           "format": "percentunit",
           "label": "% time in GC",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "collapsed": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1116,6 +1168,14 @@
       },
       "id": 29,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "uid": "$datasource"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Throughput In/Out",
       "type": "row"
     },
@@ -1124,7 +1184,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${datasource}",
+      "datasource": {
+        "uid": "${datasource}"
+      },
       "editable": true,
       "error": false,
       "fieldConfig": {
@@ -1162,7 +1224,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "9.0.7",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1172,6 +1234,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "${datasource}"
+          },
           "expr": "sum without(instance)(rate(kafka_server_brokertopicmetrics_messagesinpersec{job=\"integrations/kafka\",instance=~\"$broker_id\",topic=~\"$topic\"}[$__rate_interval]))",
           "interval": "",
           "intervalFactor": 2,
@@ -1182,9 +1247,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Messages In Per Topic",
       "tooltip": {
         "msResolution": false,
@@ -1194,9 +1257,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1205,22 +1266,16 @@
           "format": "iops",
           "label": "Messages/s",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1228,7 +1283,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${datasource}",
+      "datasource": {
+        "uid": "${datasource}"
+      },
       "editable": true,
       "error": false,
       "fieldConfig": {
@@ -1266,7 +1323,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "9.0.7",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1276,6 +1333,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "${datasource}"
+          },
           "expr": "sum without(instance)(rate(kafka_server_brokertopicmetrics_bytesinpersec{job=\"integrations/kafka\",instance=~\"$broker_id\",topic=~\"$topic\"}[$__rate_interval]))",
           "format": "time_series",
           "interval": "",
@@ -1287,9 +1347,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Bytes In Per Topic",
       "tooltip": {
         "msResolution": false,
@@ -1299,9 +1357,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1310,22 +1366,16 @@
           "format": "Bps",
           "label": "Bytes/s",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1333,7 +1383,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${datasource}",
+      "datasource": {
+        "uid": "${datasource}"
+      },
       "editable": true,
       "error": false,
       "fieldConfig": {
@@ -1371,7 +1423,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "9.0.7",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1381,6 +1433,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "${datasource}"
+          },
           "expr": "sum without(instance)(rate(kafka_server_brokertopicmetrics_bytesoutpersec{job=\"integrations/kafka\",instance=~\"$broker_id\",topic=~\"$topic\"}[$__rate_interval]))",
           "interval": "",
           "intervalFactor": 2,
@@ -1391,9 +1446,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Bytes Out Per Topic",
       "tooltip": {
         "msResolution": false,
@@ -1403,9 +1456,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1414,22 +1465,16 @@
           "format": "Bps",
           "label": "Bytes/s",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1437,7 +1482,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${datasource}",
+      "datasource": {
+        "uid": "${datasource}"
+      },
       "editable": true,
       "error": false,
       "fieldConfig": {
@@ -1475,7 +1522,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "9.0.7",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1485,6 +1532,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "${datasource}"
+          },
           "expr": "sum without(topic)(rate(kafka_server_brokertopicmetrics_messagesinpersec{job=\"integrations/kafka\",instance=~\"$broker_id\",topic=~\"$topic\"}[$__rate_interval]))",
           "format": "time_series",
           "interval": "",
@@ -1496,9 +1546,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Messages In Per Broker",
       "tooltip": {
         "msResolution": false,
@@ -1508,9 +1556,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1519,22 +1565,16 @@
           "format": "iops",
           "label": "Messages/s",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1542,7 +1582,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${datasource}",
+      "datasource": {
+        "uid": "${datasource}"
+      },
       "editable": true,
       "error": false,
       "fieldConfig": {
@@ -1580,7 +1622,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "9.0.7",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1590,6 +1632,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "${datasource}"
+          },
           "expr": "sum without(topic)(rate(kafka_server_brokertopicmetrics_bytesinpersec{job=\"integrations/kafka\",instance=~\"$broker_id\",topic=~\"$topic\"}[$__rate_interval]))",
           "format": "time_series",
           "interval": "",
@@ -1601,9 +1646,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Bytes In Per Broker",
       "tooltip": {
         "msResolution": false,
@@ -1613,9 +1656,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1624,22 +1665,16 @@
           "format": "Bps",
           "label": "Bytes/s",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1647,7 +1682,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${datasource}",
+      "datasource": {
+        "uid": "${datasource}"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -1681,7 +1718,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "9.0.7",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1691,6 +1728,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "${datasource}"
+          },
           "expr": "sum without(topic)(rate(kafka_server_brokertopicmetrics_bytesoutpersec{job=\"integrations/kafka\",instance=~\"$broker_id\",topic=~\"$topic\"}[$__rate_interval]))",
           "format": "time_series",
           "interval": "",
@@ -1700,9 +1740,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Bytes Out Per Broker",
       "tooltip": {
         "shared": true,
@@ -1711,38 +1749,32 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "collapsed": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1751,6 +1783,14 @@
       },
       "id": 117,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "uid": "$datasource"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Replication",
       "type": "row"
     },
@@ -1759,7 +1799,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "Offline partitions over time",
       "fieldConfig": {
         "defaults": {
@@ -1793,7 +1835,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "9.0.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1803,6 +1845,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "sum(kafka_server_replicamanager_partitioncount{job=\"integrations/kafka\",instance=~\"$broker_id\"})",
           "interval": "",
           "legendFormat": "",
@@ -1810,9 +1855,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Online Partitions",
       "tooltip": {
         "shared": true,
@@ -1821,33 +1864,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1855,7 +1889,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "Offline partitions over time",
       "fieldConfig": {
         "defaults": {
@@ -1889,7 +1925,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "9.0.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1899,6 +1935,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "sum(kafka_controller_kafkacontroller_offlinepartitionscount{job=\"integrations/kafka\",instance=~\"$broker_id\"})",
           "interval": "",
           "legendFormat": "",
@@ -1906,9 +1945,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Offline Partitions",
       "tooltip": {
         "shared": true,
@@ -1917,33 +1954,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1951,7 +1979,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "Under replicated partitions over time",
       "fieldConfig": {
         "defaults": {
@@ -1985,7 +2015,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "9.0.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1995,6 +2025,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "sum(kafka_cluster_partition_underreplicated{job=\"integrations/kafka\",instance=~\"$broker_id\"})",
           "interval": "",
           "legendFormat": "",
@@ -2002,9 +2035,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Under Replicated Partitions",
       "tooltip": {
         "shared": true,
@@ -2013,33 +2044,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2047,7 +2069,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "Under min in sync replicas partitions over time",
       "fieldConfig": {
         "defaults": {
@@ -2081,7 +2105,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "9.0.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2091,6 +2115,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "sum(kafka_cluster_partition_underminisr{job=\"integrations/kafka\",instance=~\"$broker_id\"})",
           "interval": "",
           "legendFormat": "",
@@ -2098,9 +2125,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Under Min ISR Partitions",
       "tooltip": {
         "shared": true,
@@ -2109,38 +2134,31 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "collapsed": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -2149,6 +2167,14 @@
       },
       "id": 44,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "uid": "$datasource"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Thread utilization",
       "type": "row"
     },
@@ -2157,7 +2183,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "Average fraction of time the network processor threads are idle. Values are between 0 (all resources are used) and 100 (all resources are available) ",
       "fieldConfig": {
         "defaults": {
@@ -2191,7 +2219,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "9.0.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2201,15 +2229,16 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "kafka_network_socketserver_networkprocessoravgidlepercent{job=\"integrations/kafka\",instance=~\"$broker_id\"}",
           "legendFormat": "{{instance}}",
           "refId": "A"
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Network Processor Avg Idle Percent",
       "tooltip": {
         "shared": true,
@@ -2218,33 +2247,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "percentunit",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2252,7 +2272,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "Average fraction of time the request handler threads are idle. Values are between 0 (all resources are used) and 100 (all resources are available). ",
       "fieldConfig": {
         "defaults": {
@@ -2286,7 +2308,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "9.0.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2296,15 +2318,16 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "kafka_server_kafkarequesthandlerpool_requesthandleravgidlepercent_total{job=\"integrations/kafka\",instance=~\"$broker_id\"}",
           "legendFormat": "{{instance}}",
           "refId": "A"
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Request Handler Avg Idle Percent",
       "tooltip": {
         "shared": true,
@@ -2313,33 +2336,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "percentunit",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2347,7 +2361,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -2380,7 +2396,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "9.0.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2390,6 +2406,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "kafka_network_requestchannel_requestqueuesize{job=\"integrations/kafka\",  instance=~\"$broker_id\"}",
           "interval": "",
           "legendFormat": "{{instance}}",
@@ -2397,9 +2416,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Request Queue Size",
       "tooltip": {
         "shared": true,
@@ -2408,33 +2425,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2442,7 +2450,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -2475,7 +2485,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "9.0.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2485,6 +2495,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "kafka_network_requestchannel_responsequeuesize{job=\"integrations/kafka\",  instance=~\"$broker_id\",processor=\"\"}",
           "interval": "",
           "legendFormat": "{{instance}}",
@@ -2492,9 +2505,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Response Queue Size",
       "tooltip": {
         "shared": true,
@@ -2503,38 +2514,31 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "collapsed": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -2543,6 +2547,14 @@
       },
       "id": 86,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "uid": "$datasource"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Zookeeper",
       "type": "row"
     },
@@ -2551,7 +2563,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "Latency in millseconds for ZooKeeper requests from broker. ",
       "fieldConfig": {
         "defaults": {
@@ -2585,7 +2599,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "9.0.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2595,6 +2609,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "kafka_server_zookeeperclientmetrics_zookeeperrequestlatencyms{job=\"integrations/kafka\",instance=~\"$broker_id\",quantile=~\"$percentile\"}",
           "hide": false,
           "legendFormat": "{{instance}} - {{quantile}}",
@@ -2602,9 +2619,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Zookeeper Request Latency",
       "tooltip": {
         "shared": true,
@@ -2613,33 +2628,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2647,7 +2653,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -2681,7 +2689,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "9.0.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2691,6 +2699,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "rate(kafka_server_sessionexpirelistener_zookeepersyncconnectspersec{job=\"integrations/kafka\",instance=~\"$broker_id\"}[$__rate_interval])",
           "hide": false,
           "instant": false,
@@ -2700,9 +2711,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Zookeeper connections per sec",
       "tooltip": {
         "shared": true,
@@ -2711,33 +2720,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2745,7 +2745,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -2779,7 +2781,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "9.0.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2789,6 +2791,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "rate(kafka_server_sessionexpirelistener_zookeeperexpirespersec{job=\"integrations/kafka\",instance=~\"$broker_id\"}[$__rate_interval])",
           "hide": false,
           "interval": "",
@@ -2797,9 +2802,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Zookeeper expired connections per sec",
       "tooltip": {
         "shared": true,
@@ -2808,33 +2811,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2842,7 +2836,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -2876,7 +2872,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "9.0.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2886,6 +2882,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "rate(kafka_server_sessionexpirelistener_zookeeperdisconnectspersec{job=\"integrations/kafka\",instance=~\"$broker_id\"}[$__rate_interval])",
           "hide": false,
           "interval": "",
@@ -2894,9 +2893,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Zookeeper disconnect per sec",
       "tooltip": {
         "shared": true,
@@ -2905,143 +2902,47 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "$datasource",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 83
-      },
-      "hiddenSeries": false,
-      "id": 91,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.6",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "rate(kafka_server_sessionexpirelistener_zookeeperauthfailurespersec{job=\"integrations/kafka\",instance=~\"$broker_id\"}[$__rate_interval])",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "{{instance}}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Zookeeper auth failures per sec",
-      "tooltip": {
-        "shared": true,
-        "sort": 2,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "collapsed": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 91
+        "y": 83
       },
       "id": 82,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "uid": "$datasource"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Isr Shrinks / Expands",
       "type": "row"
     },
@@ -3050,7 +2951,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": ": The number of in-sync replicas (ISRs) for a particular partition should remain fairly static, the only exceptions are when you are expanding your broker cluster or removing partitions. In order to maintain high availability, a healthy Kafka cluster requires a minimum number of ISRs for failover. A replica could be removed from the ISR pool for a couple of reasons: it is too far behind the leaders offset (user-configurable by setting the replica.lag.max.messages configuration parameter), or it has not contacted the leader for some time (configurable with the replica.socket.timeout.ms parameter). No matter the reason, an increase in IsrShrinksPerSec without a corresponding increase in IsrExpandsPerSec shortly thereafter is cause for concern and requires user intervention.The Kafka documentation provides a wealth of information on the user-configurable parameters for brokers.",
       "fieldConfig": {
         "defaults": {
@@ -3064,7 +2967,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 92
+        "y": 84
       },
       "hiddenSeries": false,
       "id": 80,
@@ -3084,7 +2987,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "9.0.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3094,15 +2997,16 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "kafka_server_replicamanager_isrshrinkspersec{job=\"integrations/kafka\",instance=~\"$broker_id\"}",
           "legendFormat": "{{instance}}",
           "refId": "A"
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "IsrShrinks per Sec",
       "tooltip": {
         "shared": true,
@@ -3111,33 +3015,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "ops",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -3145,7 +3040,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": ": The number of in-sync replicas (ISRs) for a particular partition should remain fairly static, the only exceptions are when you are expanding your broker cluster or removing partitions. In order to maintain high availability, a healthy Kafka cluster requires a minimum number of ISRs for failover. A replica could be removed from the ISR pool for a couple of reasons: it is too far behind the leaders offset (user-configurable by setting the replica.lag.max.messages configuration parameter), or it has not contacted the leader for some time (configurable with the replica.socket.timeout.ms parameter). No matter the reason, an increase in IsrShrinksPerSec without a corresponding increase in IsrExpandsPerSec shortly thereafter is cause for concern and requires user intervention.The Kafka documentation provides a wealth of information on the user-configurable parameters for brokers.",
       "fieldConfig": {
         "defaults": {
@@ -3159,7 +3056,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 92
+        "y": 84
       },
       "hiddenSeries": false,
       "id": 83,
@@ -3179,7 +3076,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "9.0.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3189,6 +3086,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "kafka_server_replicamanager_isrexpandspersec{job=\"integrations/kafka\",instance=~\"$broker_id\"}",
           "hide": false,
           "legendFormat": "{{instance}}",
@@ -3196,9 +3096,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "IsrExpands per Sec",
       "tooltip": {
         "shared": true,
@@ -3207,46 +3105,47 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "ops",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "collapsed": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 100
+        "y": 92
       },
       "id": 53,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "uid": "$datasource"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Logs size",
       "type": "row"
     },
@@ -3255,7 +3154,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -3268,7 +3169,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 101
+        "y": 93
       },
       "hiddenSeries": false,
       "id": 55,
@@ -3288,7 +3189,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "9.0.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3298,6 +3199,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "sum(kafka_log_log_size{job=\"integrations/kafka\",instance=~\"$broker_id\",topic=~\"$topic\"}) by (topic)",
           "interval": "",
           "legendFormat": "{{topic}}",
@@ -3305,9 +3209,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Log size per Topic",
       "tooltip": {
         "shared": true,
@@ -3316,33 +3218,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "decbytes",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -3350,7 +3243,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -3363,7 +3258,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 101
+        "y": 93
       },
       "hiddenSeries": false,
       "id": 56,
@@ -3383,7 +3278,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.6",
+      "pluginVersion": "9.0.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3393,6 +3288,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "sum(kafka_log_log_size{job=\"integrations/kafka\",instance=~\"$broker_id\",topic=~\"$topic\"}) by (instance)",
           "interval": "",
           "legendFormat": "{{instance}}",
@@ -3400,9 +3298,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Log size per Broker",
       "tooltip": {
         "shared": true,
@@ -3411,46 +3307,47 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "decbytes",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "collapsed": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 109
+        "y": 101
       },
       "id": 58,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "uid": "$datasource"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Producer Performance",
       "type": "row"
     },
@@ -3459,7 +3356,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "A high value can imply there aren't enough IO threads or the CPU is a bottleneck, or the request queue isnt large enough. The request queue size should match the number of connections.",
       "fieldConfig": {
         "defaults": {
@@ -3473,7 +3372,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 110
+        "y": 102
       },
       "hiddenSeries": false,
       "id": 60,
@@ -3503,6 +3402,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "kafka_network_requestmetrics_requestqueuetimems{job=\"integrations/kafka\",instance=~\"$broker_id\",quantile=~\"$percentile\",request=\"Produce\"}",
           "hide": false,
           "legendFormat": "{{instance}} - {{quantile}}",
@@ -3510,9 +3412,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Producer - RequestQueueTimeMs",
       "tooltip": {
         "shared": true,
@@ -3521,33 +3421,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -3555,7 +3446,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "In most cases, a high value can imply slow local storage or the storage is a bottleneck. One should also investigate LogFlushRateAndTimeMs to know how long page flushes are taking, which will also indicate a slow disk. In the case of FetchFollower requests, time spent in LocalTimeMs can be the result of a ZooKeeper write to change the ISR.",
       "fieldConfig": {
         "defaults": {
@@ -3569,7 +3462,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 110
+        "y": 102
       },
       "hiddenSeries": false,
       "id": 61,
@@ -3599,6 +3492,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "kafka_network_requestmetrics_localtimems{job=\"integrations/kafka\",instance=~\"$broker_id\",quantile=~\"$percentile\",request=\"Produce\"}",
           "hide": false,
           "legendFormat": "{{instance}} - {{quantile}}",
@@ -3606,9 +3502,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Producer - LocalTimeMs",
       "tooltip": {
         "shared": true,
@@ -3617,33 +3511,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -3651,7 +3536,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "A high value can imply a slow network connection. For fetch request, if the remote time is high, it could be that there is not enough data to give in a fetch response. This can happen when the consumer or replica is caught up and there is no new incoming data. If this is the case, remote time will be close to the max wait time, which is normal. Max wait time is configured via replica.fetch.wait.max.ms and fetch.max.wait.ms. ",
       "fieldConfig": {
         "defaults": {
@@ -3665,7 +3552,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 118
+        "y": 110
       },
       "hiddenSeries": false,
       "id": 62,
@@ -3695,6 +3582,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "kafka_network_requestmetrics_remotetimems{job=\"integrations/kafka\",instance=~\"$broker_id\",quantile=~\"$percentile\",request=\"Produce\"}",
           "hide": false,
           "legendFormat": "{{instance}} - {{quantile}}",
@@ -3702,9 +3592,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Producer - RemoteTimeMs",
       "tooltip": {
         "shared": true,
@@ -3713,33 +3601,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -3747,7 +3626,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "A high value can imply there aren't enough network threads or the network cant dequeue responses quickly enough, causing back pressure in the response queue. ",
       "fieldConfig": {
         "defaults": {
@@ -3761,7 +3642,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 118
+        "y": 110
       },
       "hiddenSeries": false,
       "id": 63,
@@ -3791,6 +3672,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "kafka_network_requestmetrics_responsequeuetimems{job=\"integrations/kafka\",instance=~\"$broker_id\",quantile=~\"$percentile\",request=\"Produce\"}",
           "hide": false,
           "legendFormat": "{{instance}} - {{quantile}}",
@@ -3798,9 +3682,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Producer - ResponseQueueTimeMs",
       "tooltip": {
         "shared": true,
@@ -3809,33 +3691,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -3843,7 +3716,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "A high value can imply the zero-copy from disk to the network is slow, or the network is the bottleneck because the network cant dequeue responses of the TCP socket as quickly as theyre being created. If the network buffer gets full, Kafka will block. ",
       "fieldConfig": {
         "defaults": {
@@ -3857,7 +3732,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 126
+        "y": 118
       },
       "hiddenSeries": false,
       "id": 64,
@@ -3887,6 +3762,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "kafka_network_requestmetrics_responsesendtimems{job=\"integrations/kafka\",instance=~\"$broker_id\",quantile=~\"$percentile\",request=\"Produce\"}",
           "hide": false,
           "legendFormat": "{{instance}} - {{quantile}}",
@@ -3894,9 +3772,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Producer - ResponseSendTimeMs",
       "tooltip": {
         "shared": true,
@@ -3905,46 +3781,47 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "collapsed": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 134
+        "y": 126
       },
       "id": 68,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "uid": "$datasource"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Consumer Performance",
       "type": "row"
     },
@@ -3953,7 +3830,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "A high value can imply there aren't enough IO threads or the CPU is a bottleneck, or the request queue isnt large enough. The request queue size should match the number of connections.",
       "fieldConfig": {
         "defaults": {
@@ -3967,7 +3846,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 135
+        "y": 127
       },
       "hiddenSeries": false,
       "id": 69,
@@ -3997,6 +3876,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "kafka_network_requestmetrics_requestqueuetimems{job=\"integrations/kafka\",instance=~\"$broker_id\",quantile=~\"$percentile\",request=\"Fetch\"}",
           "hide": false,
           "legendFormat": "{{instance}} - {{quantile}}",
@@ -4004,9 +3886,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Consumer - RequestQueueTimeMs",
       "tooltip": {
         "shared": true,
@@ -4015,33 +3895,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -4049,7 +3920,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "In most cases, a high value can imply slow local storage or the storage is a bottleneck. One should also investigate LogFlushRateAndTimeMs to know how long page flushes are taking, which will also indicate a slow disk. In the case of FetchFollower requests, time spent in LocalTimeMs can be the result of a ZooKeeper write to change the ISR.",
       "fieldConfig": {
         "defaults": {
@@ -4063,7 +3936,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 135
+        "y": 127
       },
       "hiddenSeries": false,
       "id": 70,
@@ -4093,6 +3966,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "kafka_network_requestmetrics_localtimems{job=\"integrations/kafka\",instance=~\"$broker_id\",quantile=~\"$percentile\",request=\"Fetch\"}",
           "hide": false,
           "legendFormat": "{{instance}} - {{quantile}}",
@@ -4100,9 +3976,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Consumer - LocalTimeMs",
       "tooltip": {
         "shared": true,
@@ -4111,33 +3985,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -4145,7 +4010,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "A high value can imply a slow network connection. For fetch request, if the remote time is high, it could be that there is not enough data to give in a fetch response. This can happen when the consumer or replica is caught up and there is no new incoming data. If this is the case, remote time will be close to the max wait time, which is normal. Max wait time is configured via replica.fetch.wait.max.ms and fetch.max.wait.ms. ",
       "fieldConfig": {
         "defaults": {
@@ -4159,7 +4026,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 143
+        "y": 135
       },
       "hiddenSeries": false,
       "id": 71,
@@ -4189,6 +4056,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "kafka_network_requestmetrics_remotetimems{job=\"integrations/kafka\",instance=~\"$broker_id\",quantile=~\"$percentile\",request=\"Fetch\"}",
           "hide": false,
           "legendFormat": "{{instance}} - {{quantile}}",
@@ -4196,9 +4066,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Consumer - RemoteTimeMs",
       "tooltip": {
         "shared": true,
@@ -4207,33 +4075,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -4241,7 +4100,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "A high value can imply there aren't enough network threads or the network cant dequeue responses quickly enough, causing back pressure in the response queue. ",
       "fieldConfig": {
         "defaults": {
@@ -4255,7 +4116,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 143
+        "y": 135
       },
       "hiddenSeries": false,
       "id": 72,
@@ -4285,6 +4146,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "kafka_network_requestmetrics_responsequeuetimems{job=\"integrations/kafka\",instance=~\"$broker_id\",quantile=~\"$percentile\",request=\"Fetch\"}",
           "hide": false,
           "legendFormat": "{{instance}} - {{quantile}}",
@@ -4292,9 +4156,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Consumer - ResponseQueueTimeMs",
       "tooltip": {
         "shared": true,
@@ -4303,33 +4165,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -4337,7 +4190,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "A high value can imply the zero-copy from disk to the network is slow, or the network is the bottleneck because the network cant dequeue responses of the TCP socket as quickly as theyre being created. If the network buffer gets full, Kafka will block. ",
       "fieldConfig": {
         "defaults": {
@@ -4351,7 +4206,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 151
+        "y": 143
       },
       "hiddenSeries": false,
       "id": 73,
@@ -4381,6 +4236,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "kafka_network_requestmetrics_responsesendtimems{job=\"integrations/kafka\",instance=~\"$broker_id\",quantile=~\"$percentile\",request=\"Fetch\"}",
           "hide": false,
           "legendFormat": "{{instance}} - {{quantile}}",
@@ -4388,9 +4246,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Consumer - ResponseSendTimeMs",
       "tooltip": {
         "shared": true,
@@ -4399,46 +4255,47 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "collapsed": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 159
+        "y": 151
       },
       "id": 66,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "uid": "$datasource"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Fetch Follower Performance",
       "type": "row"
     },
@@ -4447,7 +4304,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "A high value can imply there aren't enough IO threads or the CPU is a bottleneck, or the request queue isnt large enough. The request queue size should match the number of connections.",
       "fieldConfig": {
         "defaults": {
@@ -4461,7 +4320,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 160
+        "y": 152
       },
       "hiddenSeries": false,
       "id": 74,
@@ -4491,6 +4350,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "kafka_network_requestmetrics_requestqueuetimems{job=\"integrations/kafka\",instance=~\"$broker_id\",quantile=~\"$percentile\",request=\"FetchFollower\"}",
           "hide": false,
           "legendFormat": "{{instance}} - {{quantile}}",
@@ -4498,9 +4360,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "FetchFollower - RequestQueueTimeMs",
       "tooltip": {
         "shared": true,
@@ -4509,33 +4369,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -4543,7 +4394,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "In most cases, a high value can imply slow local storage or the storage is a bottleneck. One should also investigate LogFlushRateAndTimeMs to know how long page flushes are taking, which will also indicate a slow disk. In the case of FetchFollower requests, time spent in LocalTimeMs can be the result of a ZooKeeper write to change the ISR.",
       "fieldConfig": {
         "defaults": {
@@ -4557,7 +4410,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 160
+        "y": 152
       },
       "hiddenSeries": false,
       "id": 75,
@@ -4587,6 +4440,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "kafka_network_requestmetrics_localtimems{job=\"integrations/kafka\",instance=~\"$broker_id\",quantile=~\"$percentile\",request=\"FetchFollower\"}",
           "hide": false,
           "legendFormat": "{{instance}} - {{quantile}}",
@@ -4594,9 +4450,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "FetchFollower - LocalTimeMs",
       "tooltip": {
         "shared": true,
@@ -4605,33 +4459,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -4639,7 +4484,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "A high value can imply a slow network connection. For fetch request, if the remote time is high, it could be that there is not enough data to give in a fetch response. This can happen when the consumer or replica is caught up and there is no new incoming data. If this is the case, remote time will be close to the max wait time, which is normal. Max wait time is configured via replica.fetch.wait.max.ms and fetch.max.wait.ms. ",
       "fieldConfig": {
         "defaults": {
@@ -4653,7 +4500,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 168
+        "y": 160
       },
       "hiddenSeries": false,
       "id": 76,
@@ -4683,6 +4530,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "kafka_network_requestmetrics_remotetimems{job=\"integrations/kafka\",instance=~\"$broker_id\",quantile=~\"$percentile\",request=\"FetchFollower\"}",
           "hide": false,
           "legendFormat": "{{instance}} - {{quantile}}",
@@ -4690,9 +4540,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "FetchFollower - RemoteTimeMs",
       "tooltip": {
         "shared": true,
@@ -4701,33 +4549,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -4735,7 +4574,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "A high value can imply there aren't enough network threads or the network cant dequeue responses quickly enough, causing back pressure in the response queue. ",
       "fieldConfig": {
         "defaults": {
@@ -4749,7 +4590,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 168
+        "y": 160
       },
       "hiddenSeries": false,
       "id": 77,
@@ -4779,6 +4620,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "kafka_network_requestmetrics_responsequeuetimems{job=\"integrations/kafka\",instance=~\"$broker_id\",quantile=~\"$percentile\",request=\"FetchFollower\"}",
           "hide": false,
           "legendFormat": "{{instance}} - {{quantile}}",
@@ -4786,9 +4630,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "FetchFollower - ResponseQueueTimeMs",
       "tooltip": {
         "shared": true,
@@ -4797,33 +4639,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -4831,7 +4664,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "A high value can imply the zero-copy from disk to the network is slow, or the network is the bottleneck because the network cant dequeue responses of the TCP socket as quickly as theyre being created. If the network buffer gets full, Kafka will block. ",
       "fieldConfig": {
         "defaults": {
@@ -4845,7 +4680,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 176
+        "y": 168
       },
       "hiddenSeries": false,
       "id": 78,
@@ -4875,6 +4710,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "kafka_network_requestmetrics_responsesendtimems{job=\"integrations/kafka\",instance=~\"$broker_id\",quantile=~\"$percentile\",request=\"FetchFollower\"}",
           "hide": false,
           "legendFormat": "{{instance}} - {{quantile}}",
@@ -4882,9 +4720,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "FetchFollower - ResponseSendTimeMs",
       "tooltip": {
         "shared": true,
@@ -4893,46 +4729,47 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "collapsed": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 184
+        "y": 176
       },
       "id": 97,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "uid": "$datasource"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Group Coordinator",
       "type": "row"
     },
@@ -4941,7 +4778,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "Number of consumer groups per group coordinator",
       "fieldConfig": {
         "defaults": {
@@ -4955,7 +4794,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 185
+        "y": 177
       },
       "hiddenSeries": false,
       "id": 99,
@@ -4985,6 +4824,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "kafka_coordinator_group_groupmetadatamanager_numgroups{job=\"integrations/kafka\",  instance=~\"$broker_id\"}",
           "instant": false,
           "interval": "",
@@ -4993,9 +4835,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Consumer groups number per coordinator",
       "tooltip": {
         "shared": true,
@@ -5004,33 +4844,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -5038,7 +4869,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "Number of consumer group per state",
       "fieldConfig": {
         "defaults": {
@@ -5052,7 +4885,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 185
+        "y": 177
       },
       "hiddenSeries": false,
       "id": 100,
@@ -5082,6 +4915,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "sum(kafka_coordinator_group_groupmetadatamanager_numgroupsstable{job=\"integrations/kafka\",  instance=~\"$broker_id\"})",
           "instant": false,
           "interval": "",
@@ -5089,24 +4925,36 @@
           "refId": "A"
         },
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "sum(kafka_coordinator_group_groupmetadatamanager_numgroupspreparingrebalance{job=\"integrations/kafka\",  instance=~\"$broker_id\"})",
           "interval": "",
           "legendFormat": "preparing-rebalance",
           "refId": "B"
         },
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "sum(kafka_coordinator_group_groupmetadatamanager_numgroupsdead{job=\"integrations/kafka\",  instance=~\"$broker_id\"})",
           "interval": "",
           "legendFormat": "dead",
           "refId": "C"
         },
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "sum(kafka_coordinator_group_groupmetadatamanager_numgroupscompletingrebalance{job=\"integrations/kafka\",  instance=~\"$broker_id\"})",
           "interval": "",
           "legendFormat": "completing-rebalance",
           "refId": "D"
         },
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "sum(kafka_coordinator_group_groupmetadatamanager_numgroupsempty{job=\"integrations/kafka\",  instance=~\"$broker_id\"})",
           "interval": "",
           "legendFormat": "empty",
@@ -5114,9 +4962,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Nb consumer groups per state",
       "tooltip": {
         "shared": true,
@@ -5125,46 +4971,47 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "collapsed": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 193
+        "y": 185
       },
       "id": 102,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "uid": "$datasource"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Connections",
       "type": "row"
     },
@@ -5173,7 +5020,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -5186,7 +5035,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 194
+        "y": 186
       },
       "hiddenSeries": false,
       "id": 104,
@@ -5216,6 +5065,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "sum(kafka_server_socketservermetrics_connection_count{job=\"integrations/kafka\",  instance=~\"$broker_id\"}) by (listener)",
           "interval": "",
           "legendFormat": "{{listener}}",
@@ -5223,9 +5075,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Connections count per listener",
       "tooltip": {
         "shared": true,
@@ -5234,33 +5084,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -5268,7 +5109,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -5281,7 +5124,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 194
+        "y": 186
       },
       "hiddenSeries": false,
       "id": 105,
@@ -5311,6 +5154,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "sum(kafka_server_socketservermetrics_connection_count{job=\"integrations/kafka\",  instance=~\"$broker_id\"}) by (instance)",
           "interval": "",
           "legendFormat": "{{instance}}",
@@ -5318,9 +5164,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Connections count per broker",
       "tooltip": {
         "shared": true,
@@ -5329,33 +5173,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -5363,7 +5198,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -5376,7 +5213,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 202
+        "y": 194
       },
       "hiddenSeries": false,
       "id": 106,
@@ -5406,6 +5243,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "sum(kafka_server_socketservermetrics_connection_creation_rate{job=\"integrations/kafka\",  instance=~\"$broker_id\"}) by (listener)",
           "interval": "",
           "legendFormat": "{{listener}}",
@@ -5413,9 +5253,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Connections creation rate per listener",
       "tooltip": {
         "shared": true,
@@ -5424,33 +5262,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -5458,7 +5287,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -5471,7 +5302,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 202
+        "y": 194
       },
       "hiddenSeries": false,
       "id": 107,
@@ -5501,6 +5332,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "sum(kafka_server_socketservermetrics_connection_creation_rate{job=\"integrations/kafka\",  instance=~\"$broker_id\"}) by (instance)",
           "interval": "",
           "legendFormat": "{{instance}}",
@@ -5508,9 +5342,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Connections creation rate per instance",
       "tooltip": {
         "shared": true,
@@ -5519,33 +5351,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -5553,7 +5376,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -5566,7 +5391,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 210
+        "y": 202
       },
       "hiddenSeries": false,
       "id": 108,
@@ -5596,6 +5421,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "sum(kafka_server_socketservermetrics_connection_close_rate{job=\"integrations/kafka\",  instance=~\"$broker_id\"}) by (listener)",
           "interval": "",
           "legendFormat": "{{listener}}",
@@ -5603,9 +5431,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Connections close rate per listener",
       "tooltip": {
         "shared": true,
@@ -5614,33 +5440,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -5648,7 +5465,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -5661,7 +5480,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 210
+        "y": 202
       },
       "hiddenSeries": false,
       "id": 110,
@@ -5691,6 +5510,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "sum(kafka_server_socketservermetrics_connection_close_rate{job=\"integrations/kafka\",  instance=~\"$broker_id\"}) by (instance)",
           "interval": "",
           "legendFormat": "{{instance}}",
@@ -5698,9 +5520,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Connections close rate per instance",
       "tooltip": {
         "shared": true,
@@ -5709,33 +5529,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -5743,7 +5554,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "Tracks the amount of time Acceptor is blocked from accepting connections. See KIP-402 for more details.",
       "fieldConfig": {
         "defaults": {
@@ -5757,7 +5570,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 218
+        "y": 210
       },
       "hiddenSeries": false,
       "id": 124,
@@ -5787,6 +5600,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "kafka_network_acceptor_acceptorblockedpercent{job=\"integrations/kafka\",  instance=~\"$broker_id\"}",
           "interval": "",
           "legendFormat": "{{instance}} - {{listener}}",
@@ -5794,9 +5610,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Acceptor Blocked Percentage",
       "tooltip": {
         "shared": true,
@@ -5805,33 +5619,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "percent",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -5839,7 +5644,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -5852,7 +5659,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 218
+        "y": 210
       },
       "hiddenSeries": false,
       "id": 113,
@@ -5882,6 +5689,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "sum(kafka_server_socketservermetrics_connections{job=\"integrations/kafka\",  instance=~\"$broker_id\"}) by (client_software_name, client_software_version)",
           "interval": "",
           "legendFormat": "{{client_software_name}} {{client_software_version}}",
@@ -5889,9 +5699,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Connections per client version",
       "tooltip": {
         "shared": true,
@@ -5900,70 +5708,73 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "collapsed": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 226
+        "y": 218
       },
       "id": 31,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "uid": "$datasource"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Request rate",
       "type": "row"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "Total request rate.",
       "fieldConfig": {
         "defaults": {
           "mappings": [
             {
-              "id": 0,
-              "op": "=",
-              "text": "N/A",
-              "type": 1,
-              "value": "null"
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
             }
           ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -5975,10 +5786,9 @@
         "h": 4,
         "w": 4,
         "x": 0,
-        "y": 227
+        "y": 219
       },
       "id": 37,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -6004,38 +5814,41 @@
       "pluginVersion": "7.5.6",
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "sum(rate(kafka_network_requestmetrics_requestspersec{job=\"integrations/kafka\",instance=~\"$broker_id\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Total Request Per Sec",
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "Produce request rate.",
       "fieldConfig": {
         "defaults": {
           "mappings": [
             {
-              "id": 0,
-              "op": "=",
-              "text": "N/A",
-              "type": 1,
-              "value": "null"
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
             }
           ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -6047,10 +5860,9 @@
         "h": 4,
         "w": 4,
         "x": 4,
-        "y": 227
+        "y": 219
       },
       "id": 112,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -6076,38 +5888,41 @@
       "pluginVersion": "7.5.6",
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "sum(rate(kafka_network_requestmetrics_requestspersec{job=\"integrations/kafka\",instance=~\"$broker_id\",request=\"Produce\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Produce Request Per Sec",
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "Fetch request rate.",
       "fieldConfig": {
         "defaults": {
           "mappings": [
             {
-              "id": 0,
-              "op": "=",
-              "text": "N/A",
-              "type": 1,
-              "value": "null"
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
             }
           ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -6119,10 +5934,9 @@
         "h": 4,
         "w": 4,
         "x": 8,
-        "y": 227
+        "y": 219
       },
       "id": 111,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -6148,38 +5962,41 @@
       "pluginVersion": "7.5.6",
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "sum(rate(kafka_network_requestmetrics_requestspersec{job=\"integrations/kafka\",instance=~\"$broker_id\",request=\"FetchConsumer\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Fetch Request Per Sec",
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "Offset Commit request rate.",
       "fieldConfig": {
         "defaults": {
           "mappings": [
             {
-              "id": 0,
-              "op": "=",
-              "text": "N/A",
-              "type": 1,
-              "value": "null"
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
             }
           ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -6191,10 +6008,9 @@
         "h": 4,
         "w": 4,
         "x": 12,
-        "y": 227
+        "y": 219
       },
       "id": 38,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -6220,38 +6036,41 @@
       "pluginVersion": "7.5.6",
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "sum(rate(kafka_network_requestmetrics_requestspersec{job=\"integrations/kafka\",instance=~\"$broker_id\",request=\"OffsetCommit\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Offset Commit Request Per Sec",
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "Metadata request rate.",
       "fieldConfig": {
         "defaults": {
           "mappings": [
             {
-              "id": 0,
-              "op": "=",
-              "text": "N/A",
-              "type": 1,
-              "value": "null"
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
             }
           ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -6263,10 +6082,9 @@
         "h": 4,
         "w": 4,
         "x": 16,
-        "y": 227
+        "y": 219
       },
       "id": 36,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -6292,14 +6110,15 @@
       "pluginVersion": "7.5.6",
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "sum(rate(kafka_network_requestmetrics_requestspersec{job=\"integrations/kafka\",instance=~\"$broker_id\",request=\"Metadata\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Metadata Request Per Sec",
       "type": "stat"
     },
@@ -6308,7 +6127,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -6322,7 +6143,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 231
+        "y": 223
       },
       "hiddenSeries": false,
       "id": 94,
@@ -6352,6 +6173,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "sum(rate(kafka_server_brokertopicmetrics_totalproducerequestspersec{job=\"integrations/kafka\",  instance=~\"$broker_id\",topic=~\"$topic\"}[$__rate_interval])) by (topic)",
           "interval": "",
           "legendFormat": "{{topic}}",
@@ -6359,9 +6183,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Produce request per sec per topic",
       "tooltip": {
         "shared": true,
@@ -6370,33 +6192,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -6404,7 +6217,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -6418,7 +6233,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 231
+        "y": 223
       },
       "hiddenSeries": false,
       "id": 95,
@@ -6448,6 +6263,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "sum(rate(kafka_server_brokertopicmetrics_totalfetchrequestspersec{job=\"integrations/kafka\",  instance=~\"$broker_id\",topic=~\"$topic\"}[$__rate_interval])) by (topic)",
           "interval": "",
           "legendFormat": "{{topic}}",
@@ -6455,9 +6273,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Fetch request per sec per topic",
       "tooltip": {
         "shared": true,
@@ -6466,46 +6282,47 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "collapsed": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 239
+        "y": 231
       },
       "id": 46,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "uid": "$datasource"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Message Conversion",
       "type": "row"
     },
@@ -6514,7 +6331,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "The number of messages produced converted to match the log.message.format.version.",
       "fieldConfig": {
         "defaults": {
@@ -6528,7 +6347,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 240
+        "y": 232
       },
       "hiddenSeries": false,
       "id": 48,
@@ -6558,6 +6377,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "sum(rate(kafka_server_brokertopicmetrics_producemessageconversionspersec{job=\"integrations/kafka\",instance=~\"$broker_id\"}[$__rate_interval]))",
           "hide": false,
           "interval": "",
@@ -6566,9 +6388,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Number of procuded message conversion",
       "tooltip": {
         "shared": true,
@@ -6577,33 +6397,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "iops",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -6611,7 +6422,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${datasource}",
+      "datasource": {
+        "uid": "${datasource}"
+      },
       "description": "The number of messages consumed converted at consumer to match the log.message.format.version.",
       "fieldConfig": {
         "defaults": {
@@ -6625,7 +6438,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 240
+        "y": 232
       },
       "hiddenSeries": false,
       "id": 51,
@@ -6655,6 +6468,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "${datasource}"
+          },
           "expr": "sum(rate(kafka_server_brokertopicmetrics_fetchmessageconversionspersec{job=\"integrations/kafka\",instance=~\"$broker_id\"}[$__rate_interval]))",
           "hide": false,
           "interval": "",
@@ -6663,9 +6479,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Number of consumed message conversion",
       "tooltip": {
         "shared": true,
@@ -6674,38 +6488,30 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "iops",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "cacheTimeout": null,
-      "datasource": "$datasource",
+      "datasource": {
+        "uid": "$datasource"
+      },
       "description": "Number of connection per client version",
       "fieldConfig": {
         "defaults": {
@@ -6717,8 +6523,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -6733,10 +6538,9 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 248
+        "y": 240
       },
       "id": 115,
-      "interval": null,
       "links": [],
       "options": {
         "displayLabels": [],
@@ -6757,20 +6561,21 @@
       },
       "targets": [
         {
+          "datasource": {
+            "uid": "$datasource"
+          },
           "expr": "sum(kafka_server_socketservermetrics_connections{job=\"integrations/kafka\",  instance=~\"$broker_id\"}) by (client_software_name, client_software_version) ",
           "interval": "",
           "legendFormat": "{{client_software_name}} - {{client_software_version}}",
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Client version repartition",
       "type": "piechart"
     }
   ],
   "refresh": "30s",
-  "schemaVersion": 27,
+  "schemaVersion": 36,
   "style": "dark",
   "tags": [
     "kafka-integration"
@@ -6780,11 +6585,9 @@
       {
         "current": {
           "selected": false,
-          "text": "Prometheus",
-          "value": "Prometheus"
+          "text": "grafanacloud-gabrielantunes-prom",
+          "value": "grafanacloud-gabrielantunes-prom"
         },
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": false,
         "label": "Data Source",
@@ -6793,12 +6596,11 @@
         "options": [],
         "query": "prometheus",
         "refresh": 1,
-        "regex": "",
+        "regex": "(?!grafanacloud-usage|grafanacloud-ml-metrics).+",
         "skipUrlSync": false,
         "type": "datasource"
       },
       {
-        "allValue": null,
         "current": {
           "selected": true,
           "text": [
@@ -6808,10 +6610,10 @@
             "$__all"
           ]
         },
-        "datasource": "${datasource}",
+        "datasource": {
+          "uid": "${datasource}"
+        },
         "definition": "label_values(kafka_server_kafkaserver_brokerstate, instance)",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "Broker Id",
@@ -6827,7 +6629,6 @@
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -6839,10 +6640,10 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "${datasource}",
+        "datasource": {
+          "uid": "${datasource}"
+        },
         "definition": "label_values(quantile)",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "Percentile",
@@ -6858,13 +6659,11 @@
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
       },
       {
-        "allValue": null,
         "current": {
           "selected": true,
           "text": [
@@ -6874,10 +6673,10 @@
             "$__all"
           ]
         },
-        "datasource": "${datasource}",
+        "datasource": {
+          "uid": "${datasource}"
+        },
         "definition": "label_values(kafka_log_log_size,topic)",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "Topic",
@@ -6893,7 +6692,6 @@
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -6930,6 +6728,7 @@
   },
   "timezone": "browser",
   "title": "Kafka Overview",
-  "uid": "qu-QZdfZz",
-  "version": 1
+  "uid": "aGvnYQm4k",
+  "version": 1,
+  "weekStart": ""
 }
